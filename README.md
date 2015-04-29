@@ -59,7 +59,7 @@ You remark if you disabled (willingly or by error) the add-on, all your preferen
 ## How
 The preferences file extension is <b>.nar</b>
 
-To start, fill preferences and use the "Save" button to choose where to save your preferences. In the window that opens, you discover an option at the bottom left, To save -> With specifications.
+To start, fill preferences and use the "Save" button to choose where to save your preferences. In the window that opens, you discover an option at the bottom left, <b>To save -> With specifications</b>.
 
 <b>Enabled</b>: The file name you choose will be added to the name standard like this: notify_after_render_xxxxxx.nar.
 
