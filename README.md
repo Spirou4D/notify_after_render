@@ -27,7 +27,7 @@ During your job with Blender, you need simply choose what buttons to activate in
 
 
 <b>You must receive -></b>
-- a sms or an email ("Blender has finished!") with a message like this:
+- a sms and/or an email ("Blender has finished!") with a message like this:
 
 <b><span style="color: tomato;">At :Sun, 26 Apr 2015 11:26:06 +0200, your render [ TestBlend_001.png ] is ready!</span></b>
 
