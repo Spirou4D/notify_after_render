@@ -6,7 +6,7 @@ DESCRIPTION
 IMPORTANT NOTE !
 Because renders are made automatically, this add-on need the use of "Auto save render" add-on together. But the two add-ons are independant in operations.
 
-Installation
+# Installation
 Enable the script
 
 Download the latest version of "Notify after render" from the link above.
@@ -18,8 +18,8 @@ You should now have 5 buttons below the presentation: This is the 3 choices of n
 
 In Blender the Notification buttons appear at the bottom of the Properties > Render panel that looks something like below.
 
-How to Use
-Notify after render ui.png
+# How to Use
+
 Simply define the preferences of your internet services when you want to use it. This preferences are saved with the blender config as the add-on is not disabled.
 
 During your job with Blender, you need simply choose what buttons to activate in the main render panel without to go in the user preferences and ...... go to make your course in city shops, off' course with your cellphone (and solid batteries).
@@ -34,7 +34,7 @@ And if "Use Dropbox" is checked, you could go to the web site of your dropbox se
 
 Warning: You must make some try of your setups to verify all run well.
 
-Preferences
+# Preferences
 SMS service URL: Url created by your cellphone provider to send sms to your cellphone (warning: without the message in the link, please, the add-on make its own):
 
 https ://smsapi.free-mobile.fr/sendmsg?user=XXXXXXXX&pass=XXXXXXXXXXXXXX
@@ -62,7 +62,7 @@ Enabled: The file name you choose will be added to the name standard like this: 
 
 Disabled: The preferences will be saved in a file notify_after_render.nar unique name.
 
-Must be known!
+# Must be known!
 SMS notification: Exemple of this service is here at the FreeMobile provider: Freebox
 
 If your cellphone is a verizon cellphone, you can receive a sms by a mail account filter setup like this too: http://answers.google.com/answers/threadview/id/730149.html so this SMS parameter is unusable for you but send Mail yes and add a filter for SMS!
@@ -75,5 +75,5 @@ http://sitarchi.free.fr/scripts/img/gmail_security.png
 
 Use of a Dropbox service: Several dropbox service like Dropbox Inc., GoogleDrive, oodrive, onedrive, Box, etc... use a "desktop application" to sync with their website, that's why we can copy the "render of "auto save render" add-on to a special dropbox folder. It's the process of my add-on. You must create this dropbox folder before the use of Blender off'course!
 
-Release Notes
+# Release Notes
 1.0.0 – First public release
