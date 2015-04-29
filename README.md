@@ -10,9 +10,12 @@ Because renders are made automatically, this add-on need the use of "Auto save r
 Enable the script
 
 Download the latest version of "Notify after render" from the link above.
+
 Open Blender and go to the addons tab in User Preferences.
+
 Click the Install Addon button at the bottom of the addons panel and find the *.zip file probably in your download folder.
 Then enter "Notify" in the search field. And activate the Render: Notify after render addon by checking the checkbox next right to it.
+
 You should now have 5 buttons below the presentation: This is the 3 choices of notifications and 2 for tools, if you activate them, preferences must appear to the right.
 
 
@@ -37,7 +40,7 @@ Warning: You must make some try of your setups to verify all run well.
 # Preferences
 <b>SMS service URL:</b> Url created by your cellphone provider to send sms to your cellphone (warning: without the message in the link, please, the add-on make its own):
 
-https ://smsapi.free-mobile.fr/sendmsg?user=XXXXXXXX&pass=XXXXXXXXXXXXXX
+<b><span style="color: darkred;">https ://smsapi.free-mobile.fr/sendmsg?user=XXXXXXXX&pass=XXXXXXXXXXXXXX</span></b>
 
 
 <b>Mail</b>: The adress mail you want to send a notification (like xxx@yyy.zzz).
@@ -54,7 +57,7 @@ https ://smsapi.free-mobile.fr/sendmsg?user=XXXXXXXX&pass=XXXXXXXXXXXXXX
 You remark if you disabled (willingly or by error) the add-on, all your preferences are lost like other add-ons (normally). That's why I create a load/save preferences tool to avoid to re-do the long process. In plus, you could archiving several preferences files according to the internets services used.
 
 ## How
-The preferences file extension is .nar
+The preferences file extension is <b>.nar</b>
 
 To start, fill preferences and use the "Save" button to choose where to save your preferences. In the window that opens, you discover an option at the bottom left, To save -> With specifications.
 
