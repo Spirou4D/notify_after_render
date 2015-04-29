@@ -7,8 +7,6 @@
 Because renders are made automatically, this add-on need the use of "Auto save render" add-on together. But the two add-ons are independant in operations.
 
 # Installation
-Enable the script
-
 Download the latest version of "Notify after render" from the link above.
 
 Open Blender and go to the addons tab in User Preferences.
@@ -31,7 +29,7 @@ During your job with Blender, you need simply choose what buttons to activate in
 <b>You must receive -></b>
 - a sms or an email ("Blender has finished!") with a message like this:
 
-At :Sun, 26 Apr 2015 11:26:06 +0200, your render [ TestBlend_001.png ] is ready!
+<b><span style="color: tomato;">At :Sun, 26 Apr 2015 11:26:06 +0200, your render [ TestBlend_001.png ] is ready!</span></b>
 
 And if "Use Dropbox" is checked, you could go to the web site of your dropbox service and see the result....and send it to your customer, friends, ... may be.
 
