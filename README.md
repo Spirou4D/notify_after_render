@@ -1,6 +1,6 @@
 # Notify-after-render
 
-DESCRIPTION
+<b>DESCRIPTION</b>
 "Notify after render" send different internet notifications after an automatic long render and afford to be during this time away from the computer.
 
 IMPORTANT NOTE !
