@@ -20,7 +20,7 @@
 
 bl_info = {
 	"name": "Notify after Render",
-	"description": "Use http services to send you notifications at the end of render.",
+	"description": "Use internet services to send you notifications at the end of render.",
 	"author": "Spirou4D",
 	"version": (1, 0),
 	"blender": (2, 74, 0),
