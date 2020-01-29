@@ -386,12 +386,13 @@ class RENDER_OT_notify_sendmail(Operator):
 class OBJECT_PT_UpdaterPanel(Panel):
     """Panel to demo popup notice and ignoring functionality"""
     bl_label = "Notify after render"
-    bl_idname = "OBJECT_PT_hello"
+    bl_idname = "OBJECT_PT_UpdaterPanel"
     bl_space_type = 'VIEW_3D'
-    bl_region_type = 'TOOLS' if bpy.app.version < (2, 80) else 'UI'
+    bl_region_type = 'UI'
     bl_context = "objectmode"
     bl_category = "Tools"
     bl_options = {'DEFAULT_CLOSED'}
+
 
     def draw(self, context):
         layout = self.layout
