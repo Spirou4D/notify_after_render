@@ -9,7 +9,7 @@ Because renders are made automatically, this add-on need the use of "Auto save r
 # Installation
 Download the latest release for Blender 2.80 by the above green button "Clone or Download" ! 
 
-For "2.77 -> 2.79a" Blender version of "Notify after render" : https://github.com/Spirou4D/notify_after_render/raw/master/download/stencil_widget_b2.78-master.zip.
+For "2.78 -> 2.79a" Blender version of "Notify after render" : https://github.com/Spirou4D/notify_after_render/raw/master/download/stencil_widget_b2.78-master.zip.
 
 Open Blender and go to the addons tab in User Preferences.
 
