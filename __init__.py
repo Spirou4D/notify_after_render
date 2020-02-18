@@ -568,13 +568,13 @@ class NAR_Preferences(AddonPreferences):
         # col.operator("wm.url_open","Open webpage ").url=addon_updater_ops.updater.website
 
 classes = (
-    EXPORT_OT_preferences_save,
-    IMPORT_OT_preferences_load,
-    RENDER_OT_copy_render_dropbox,
-    RENDER_OT_notify_sendmail,
-    OBJECT_PT_UpdaterPanel,
-    NAR_Preferences
-)
+        EXPORT_OT_preferences_save,
+        IMPORT_OT_preferences_load,
+        RENDER_OT_copy_render_dropbox,
+        RENDER_OT_notify_sendmail,
+        OBJECT_PT_UpdaterPanel,
+        NAR_Preferences
+    )
 
 
 def register():
