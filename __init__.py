@@ -21,7 +21,7 @@ bl_info = {
     "name":        "Notify after Render",
     "description": "Use internet services to send you notifications at the end of render.",
     "author":      "Spirou4D",
-    "version":     (1, 2, 0),
+    "version":     (1, 3, 0),
     "blender":     (2, 80, 0),
     "location":    "Active buttons in properties > render panel",
     "warning":     "Need the use of \"Auto save render\" add-ons absolutely!",
@@ -58,7 +58,12 @@ import pickle
 # updater ops import, all setup in this file
 from . import addon_updater_ops
 
-
+bpy.types.Scene.use_notifications= bpy.props.BoolProperty(
+        name=" Use Notifications",
+        description="If enabled, notify with modes",
+        default=False,
+        options={'HIDDEN'},
+        )
 
 def get_addon_preferences():
     # bpy.context.preferences.addons["notify_after_render"].preferences['send_sms']=1
@@ -180,18 +185,6 @@ def NAR_custom_pref_load(context, filepath, WHOLE):
 
     return {'FINISHED'}
 
-def notifications_UI(self, context):
-    addon_prefs = get_addon_preferences()
-
-    layout = self.layout
-    split = layout.split(factor=0.33, align=True)
-    row = split.row()
-    row.label(text="Notification by:")
-    row = split.row(align=True)
-    row.prop(addon_prefs, 'send_sms', text='SMS', toggle=False)
-    row.prop(addon_prefs, 'send_mail', text='Mail', toggle=False)
-    row = split.row()
-    row.prop(addon_prefs, 'use_dropbow_service', text='Use Dropbox', toggle=False)
 
 @persistent
 def notifications_handler(scene):
@@ -290,7 +283,7 @@ class RENDER_OT_copy_render_dropbox(Operator):
         A3 = addon_prefs.folderpath_dropbox
 
         if not A1 or not A2 or A3 == '' or bpy.data.filepath =='':
-            return
+            return {'FINISHED'} 
         rndr = scene.render
         original_format = rndr.image_settings.file_format
 
@@ -300,7 +293,7 @@ class RENDER_OT_copy_render_dropbox(Operator):
         image = bpy.data.images['Render Result']
         if not image:
             print('Dropbox_Save: Render Result not found. Image not copied')
-            return
+            return {'FINISHED'} 
 
         try:
             image.save_render(copied_name, scene=None)
@@ -309,7 +302,7 @@ class RENDER_OT_copy_render_dropbox(Operator):
             pass
         rndr.image_settings.file_format = original_format
 
-        return {'FINISHED'}
+        return  {'FINISHED'} 
 
     def invoke(self, context, event):
         try:
@@ -336,7 +329,7 @@ class RENDER_OT_notify_sendmail(Operator):
 
         if mFrom == 'tatata@blender.org' or smtpSer == 'smtp.blender.org':
             print('You must clearly setup your mail informations, please!')
-            return
+            return {'FINISHED'} 
 
         # Message contenant du text/plain
         Text = 'At :' + formatdate(localtime=True) + \
@@ -381,6 +374,33 @@ class RENDER_OT_notify_sendmail(Operator):
         return {'FINISHED'}
 
 
+class RENDER_PT_notifications(Panel):
+    bl_label = "Notify Renders with..."
+    bl_space_type = 'PROPERTIES'
+    bl_region_type = 'WINDOW'
+    bl_context = "render"
+    bl_parent_id = "RENDER_PT_context"
+    bl_options = {'DEFAULT_CLOSED'}
+    
+    
+        
+    def draw_header(self, context):
+        props = context.scene
+        self.layout.prop(props, "use_notifications", text="")
+        
+    def draw(self, context):
+        layout = self.layout
+        layout.use_property_split = True
+        layout.use_property_decorate = False
+        
+        addon_prefs = get_addon_preferences()
+        
+        props = context.scene
+        layout.active = props.use_notifications  
+        col= layout.column()
+        col.prop(addon_prefs, 'send_sms', text='SMS', toggle=False)
+        col.prop(addon_prefs, 'send_mail', text='Mail', toggle=False)
+        col.prop(addon_prefs, 'use_dropbow_service', text='Use Dropbox', toggle=False)
 
 
 class OBJECT_PT_UpdaterPanel(Panel):
@@ -390,7 +410,7 @@ class OBJECT_PT_UpdaterPanel(Panel):
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
     bl_context = "objectmode"
-    bl_category = "Tools"
+    bl_category = "Tool"
     bl_options = {'DEFAULT_CLOSED'}
 
 
@@ -567,11 +587,12 @@ class NAR_Preferences(AddonPreferences):
         # col.scale_y = 2
         # col.operator("wm.url_open","Open webpage ").url=addon_updater_ops.updater.website
 
-classes = (
+classes = (       
         EXPORT_OT_preferences_save,
         IMPORT_OT_preferences_load,
         RENDER_OT_copy_render_dropbox,
         RENDER_OT_notify_sendmail,
+        RENDER_PT_notifications,
         OBJECT_PT_UpdaterPanel,
         NAR_Preferences
     )
@@ -581,24 +602,24 @@ def register():
     # addon updater code and configurations
     # in case of broken version, try to register the updater first
     # so that users can revert back to a working version
-    addon_updater_ops.register(bl_info)
+    #addon_updater_ops.register(bl_info)
 
     # register classes
-
+    from bpy.utils import register_class
     for cls in classes:
         addon_updater_ops.make_annotations(OBJECT_PT_UpdaterPanel) # to avoid blender 2.8 warnings
         bpy.utils.register_class(cls)
-    bpy.types.RENDER_PT_context.append(notifications_UI)
+    bpy.types.RENDER_PT_context.append(RENDER_PT_notifications)
     bpy.app.handlers.render_post.append(notifications_handler)
 
 
 
 def unregister():
-    bpy.types.RENDER_PT_context.remove(notifications_UI)
+    bpy.types.RENDER_PT_context.remove(RENDER_PT_notifications)
     bpy.app.handlers.render_post.remove(notifications_handler)
-
+    from bpy.utils import register_class
     # addon updater unregister
-    addon_updater_ops.unregister()
+    #addon_updater_ops.unregister()
     # register classes
     for cls in reversed(classes):
         bpy.utils.unregister_class(cls)
